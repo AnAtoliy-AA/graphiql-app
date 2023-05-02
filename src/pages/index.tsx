@@ -2,10 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { selectAuthState, setAuthState } from '@/store/slices/authSlice/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const authState = useSelector(selectAuthState)
+  const dispatch = useDispatch()
+
   return (
     <>
       <Head>
@@ -20,6 +25,17 @@ export default function Home() {
             Get started by editing&nbsp;
             <code className={styles.code}>src/pages/index.tsx</code>
           </p>
+          <p>used this text for implementation https://blog.logrocket.com/use-redux-next-js/</p>
+          <div>
+            <div>{authState ? 'Logged in' : 'Not Logged In'}</div>
+            <button
+              onClick={() =>
+                authState ? dispatch(setAuthState(false)) : dispatch(setAuthState(true))
+              }
+            >
+              {authState ? 'Logout' : 'LogIn'}
+            </button>
+          </div>
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
