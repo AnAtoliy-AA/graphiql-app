@@ -44,6 +44,10 @@ export default function EditorPage() {
     }
   }, [user, router])
 
+  if (!user) {
+    return <Layout>Loading...</Layout>
+  }
+
   return (
     <>
       <Meta title="Editor" description="GraphQL editor" />
