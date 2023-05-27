@@ -10,7 +10,6 @@ import { useCallback, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { StartButton, SwitchButton } from '@/UI/EditorButtons'
 import { useDispatch } from 'react-redux'
-import { getGqlValueThunk } from '@/redux/features/AuthSlice/EditorSlice'
 import { AppDispatch } from '@/redux/store'
 import QueryField from '@/components/QueryField'
 import ResponseResult from '@/components/ResponseResult'
@@ -23,6 +22,7 @@ const Schema = dynamic(() => import('@/components/Schema'), {
   loading: () => <Spinner />,
 })
 import useAuth from '@/hooks/useAuth'
+import { getGqlValueThunk } from '@/redux/asyncThunks/editorThunks'
 
 export default function EditorPage() {
   const router = useRouter()
