@@ -4,7 +4,7 @@ import { DocTreeNode } from '@/services/EditorService'
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { RootState } from '@/redux/store'
-import { getGqlDocsThunk } from '@/redux/features/AuthSlice/EditorSlice'
+import { getGqlDocsThunk } from '@/redux/asyncThunks/editorThunks'
 
 const Schema = () => {
   const docTreeStore = useAppSelector((state: RootState) => state.editorSlice.docTree)
