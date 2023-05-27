@@ -1,9 +1,15 @@
-import { createAction, createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit'
+import {
+  createAction,
+  createSlice,
+  current,
+  PayloadAction,
+  SerializedError,
+} from '@reduxjs/toolkit'
 import { RootState } from '../../store'
 import { HYDRATE } from 'next-redux-wrapper'
 import { getGqlDocsThunk, getGqlValueThunk } from '@/redux/asyncThunks/editorThunks'
 import { DEFAULT_CHARACTERS } from '@/constants/editor'
-import { DocTreeNode } from '@/services/EditorService'
+import EditorService, { DocTreeNode } from '@/services/EditorService'
 
 const hydrate = createAction<RootState>(HYDRATE)
 
@@ -47,6 +53,9 @@ export const editorSlice = createSlice({
     setHeaders: (state, action: PayloadAction<string>) => {
       state.headers = action.payload
     },
+    toggleDocTreeExpanded: (state, action: PayloadAction<string>) => {
+      state.docTree = EditorService.toggleDocTreeExpanded(current(state.docTree), action.payload)
+    },
   },
 
   extraReducers: (builder) => {
@@ -77,7 +86,7 @@ export const editorSlice = createSlice({
   },
 })
 
-export const { setQuery, setVariables, setHeaders } = editorSlice.actions
+export const { setQuery, setVariables, setHeaders, toggleDocTreeExpanded } = editorSlice.actions
 export default editorSlice.reducer
 
 export const selectQuery = (state: RootState) => state.editorSlice.query
