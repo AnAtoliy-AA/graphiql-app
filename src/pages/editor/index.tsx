@@ -105,7 +105,7 @@ export default function EditorPage() {
                 <StartButton onClickHandler={handleStartClick} />
               </div>
               <div className={styles.block}>
-                <div className={styles.section}>
+                <div className={classNames(styles.section, styles.responseSection)}>
                   <ResponseResult />
                 </div>
               </div>
