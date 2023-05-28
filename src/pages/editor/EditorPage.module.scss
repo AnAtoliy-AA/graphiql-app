@@ -28,6 +28,15 @@
   overflow: hidden;
 }
 
+.responseSection {
+  display: flex;
+  @media (max-width: 450px) {
+    pre {
+      width: 250px;
+    }
+  }
+}
+
 .btnBlock {
   position: relative;
   display: flex;
