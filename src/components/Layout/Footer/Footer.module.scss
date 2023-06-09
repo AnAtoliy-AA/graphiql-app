@@ -1,0 +1,54 @@
+.footer {
+  @include font-style();
+
+  @include glass-effect();
+
+  li {
+    margin: 5px 0;
+  }
+
+  a {
+    display: flex;
+    gap: 10px;
+    @include maxQ(small) {
+      font-size: 14px;
+    }
+  }
+
+  small {
+    @include maxQ(small) {
+      display: none;
+    }
+  }
+}
+
+.container {
+  padding: 2rem 0;
+  display: flex;
+  @extend %aligncenter;
+  @extend %spacebetween;
+}
+
+.navLink {
+  position: relative;
+  text-decoration: none;
+  @extend %aligncenter;
+
+  @include bottomline_expand(white);
+}
+
+.ghLogo {
+  @include bg-img-style($image: '../../assets/icons/gh-logo_ico.png');
+  width: 20px;
+  height: 20px;
+}
+
+.rsLogo {
+  @include bg-img-style($image: '../../assets/icons/rs-logo_ico.png', $size: contain);
+  height: 40px;
+  width: 150px;
+  cursor: pointer;
+  @include maxQ(medium) {
+    width: 120px;
+  }
+}

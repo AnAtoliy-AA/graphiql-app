@@ -1,0 +1,94 @@
+.main {
+  height: 100%;
+  display: grid;
+  place-items: center center;
+}
+
+.about {
+  height: 100%;
+  @include font-style($color: $c-white);
+}
+
+.container {
+  height: 100%;
+  padding: 3rem 0;
+  @include grid();
+  place-items: center center;
+  h1 {
+    @include font-style($size: 35px, $weight: 800);
+  }
+
+  @include maxQ(medium) {
+    h1 {
+      font-size: 25px;
+    }
+  }
+
+  @include maxQ(small) {
+    @include grid($columns: 1, $rows: 2);
+  }
+}
+
+.welcomeInfo {
+  @extend %flexcolumn;
+  @include animation-slide();
+  gap: 20px;
+}
+
+.codeExample,
+.codeContainer {
+  display: flex;
+  gap: 5px;
+}
+
+.codeExample {
+  @include glass-effect();
+  @include animation-slide($name: slide-up, $start: 100px);
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid $c-white-transparent;
+  border-radius: $b-radius;
+}
+
+.codeTitle {
+  font-size: 20px;
+  justify-self: center;
+  @include maxQ(small) {
+    font-size: $font-size-base;
+  }
+}
+
+.codeContainer {
+  @include maxQ(medium) {
+    font-size: $font-size-small;
+  }
+  @media (max-width: 880px) {
+    flex-direction: column;
+  }
+  @include maxQ(small) {
+    flex-direction: row;
+  }
+  @media (max-width: 510px) {
+    pre {
+      width: 250px;
+    }
+    flex-direction: column;
+  }
+}
+
+.navBtn {
+  @include button-style();
+  @include font-style($family: $font-serif, $size: 20px, $color: $c-white);
+  background: $c-bright-purple;
+  box-sizing: border-box;
+  &:hover {
+    background: transparent;
+    color: $c-bright-purple;
+    box-shadow: inset 0 0 0 3px $c-bright-purple;
+  }
+  &:active {
+    background: $c-bright-purple;
+    color: $c-white;
+  }
+}

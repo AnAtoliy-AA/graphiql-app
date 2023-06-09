@@ -1,0 +1,97 @@
+.container {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  height: 100%;
+  width: 100%;
+  @include maxQ(small) {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.block {
+  @include block-style();
+  @include animation-slide();
+  flex-direction: column;
+  @include maxQ(small) {
+    min-height: 400px;
+  }
+}
+
+.section {
+  max-height: 100vh;
+  position: relative;
+  flex-grow: 1;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.responseSection {
+  display: flex;
+  @media (max-width: 450px) {
+    pre {
+      width: 250px;
+    }
+  }
+}
+
+.btnBlock {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.btnSection {
+  display: flex;
+  gap: 10px;
+}
+
+.headersSection {
+  border-top: 1px solid $c-white-transparent;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.docs {
+  @include font-style($color: $c-black);
+  display: flex;
+  align-items: center;
+  z-index: 6;
+  position: absolute;
+  right: -40px;
+  top: 0;
+  height: 100%;
+  max-width: 100%;
+  @include maxQ(small) {
+    right: -10px;
+  }
+}
+
+.docsSection {
+  max-width: 500px;
+  height: 100%;
+  background-color: $c-white;
+  border-radius: 5px 0 0 5px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.docsBtn {
+  @include button-style($bg-color: $c-white);
+  @include font-style($color: $c-black, $size: 14px);
+  border-radius: 5px 0 0 5px;
+  writing-mode: vertical-rl;
+  @include maxQ(small) {
+    font-size: 12px;
+  }
+}
+
+.optionsEditor {
+  position: relative;
+  height: 90%;
+}
